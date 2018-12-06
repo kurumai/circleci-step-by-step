@@ -1,0 +1,30 @@
+{
+    "run": {
+        "default": "",
+        "items": [
+            {
+                "name": "demo-java-spring",
+                "projectName": "demo-java-spring",
+                "workingDirectory": "/Users/kurumai/repos/circleci-step-by-step",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    },
+    "debug": {
+        "default": "",
+        "items": [
+            {
+                "name": "demo-java-spring",
+                "projectName": "demo-java-spring",
+                "workingDirectory": "/Users/kurumai/repos/circleci-step-by-step",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    }
+}

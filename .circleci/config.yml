@@ -1,8 +1,57 @@
 version: 2
 jobs:
-  build:
+  jdk-8:
     docker:
-      - image: circleci/openjdk:8-jdk-browsers
+    - image: circleci/openjdk:8-jdk-browsers
+    - image: circleci/postgres:9.6.3-alpine
+      environment:
+        POSTGRES_USER: root
+        POSTGRES_DB: circle_test
     steps:
-      - checkout
-      - run: echo "Hello CircleCI!"
+    - checkout
+    - run: echo "Hello CircleCI!"
+    - run:
+        name: Wait for DB
+        command: dockerize -wait tcp://127.0.0.1:5432 -timeout 120s
+
+  jdk-10:
+    docker:
+    - image: circleci/openjdk:10-jdk-browsers
+    - image: circleci/postgres:9.6.3-alpine
+      environment:
+        POSTGRES_USER: root
+        POSTGRES_DB: circle_test
+    steps:
+    - checkout
+    - run: echo "Hello CircleCI!"
+    - run:
+        name: Wait for DB
+        command: dockerize -wait tcp://127.0.0.1:5432 -timeout 120s
+
+  jdk-11:
+    docker:
+    - image: circleci/openjdk:11-jdk-browsers
+    - image: circleci/postgres:9.6.3-alpine
+      environment:
+        POSTGRES_USER: root
+        POSTGRES_DB: circle_test
+    steps:
+    - checkout
+    - run: echo "Hello CircleCI!"
+    - run:
+        name: Wait for DB
+        command: dockerize -wait tcp://127.0.0.1:5432 -timeout 120s
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - "jdk-8"
+      - "jdk-10": 
+          requires:
+            - "jdk-8"
+      - "jdk-11":
+          requires: 
+            - "jdk-8"
+
+

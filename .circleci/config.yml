@@ -1,8 +1,10 @@
-version: 2
-jobs:
-  build:
-    docker:
-      - image: circleci/openjdk:8-jdk-browsers
-    steps:
-      - checkout
-      - run: echo "Hello CircleCI!"
+version: 2.1
+
+orbs:
+    hello: circleci/hello-build@0.0.7
+
+workflows:
+    "Hello Workflow":
+        jobs:
+            - hello/hello-build
+

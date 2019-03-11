@@ -6,4 +6,3 @@ jobs:
     steps:
       - checkout
       - run: echo "Hello CircleCI!"
-      - run: echo &CIRCLE_JOB

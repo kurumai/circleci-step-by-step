@@ -3,9 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/openjdk:8-jdk-browsers
-      
-      
-      
     steps:
       - checkout
       - run: echo "Hello CircleCI!"
+      - run: echo "{{ CIRCLE_JOB }}"

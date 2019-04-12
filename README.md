@@ -1,16 +1,20 @@
-# CircleCI 2.0 Java Demo Application using Maven and Spring [![CI](https://circleci.com/gh/CircleCI-Public/circleci-demo-java-spring.svg?style=shield&circle-token=:circle-token)](https://circleci.com/gh/CircleCI-Public/circleci-demo-java-spring)
+# CircleCI Step by Step Application using Maven and Spring 
+[![CircleCI](https://circleci.com/gh/kurumai/circleci-step-by-step/tree/step5-speed-up-parallelism.svg?style=svg)](https://circleci.com/gh/kurumai/circleci-step-by-step/tree/step5-speed-up-parallelism)
 
-This is an example application showcasing how to run a Java app on CircleCI 2.0.
+This is an example application how to learn CircleCI step by step.
 
-This application uses the following tools: 
+This application has the following branches: 
 
-* Maven 
-* Java 8 
-* PostgreSQL 
-* Spring 
-* Thymeleaf
-
-You can follow along with this project by reading the [documentation](https://circleci.com/docs/2.0/language-java/).
+- master
+- step1-1st-green-build
+- step2-docker-images
+- step3-workflows
+- step3-workflows-sequential
+- step4-run-test
+- step5-speed-up-cache
+- step5-speed-up-parallelism
+- step6-secrets
+- step7-orbs
 
 ## License
 

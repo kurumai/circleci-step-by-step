@@ -71,5 +71,3 @@ workflows:
       - "jdk-8"
       - "jdk-10"
       - "jdk-11"
-
-

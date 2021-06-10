@@ -1,0 +1,17 @@
+version: "3"
+services:
+  app:
+    image: kurumai/step-by-step:latest
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+  db:
+    image: postgres:9.6-alpine
+    container_name: db
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "password"
+      POSTGRES_DB: "circle_test"
+    ports:
+      - "5432:5432"

@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 jobs:
   jdk-8:
     working_directory: ~/circleci-step-by-step

@@ -1,8 +1,5 @@
 version: 2.1
 
-orbs:
-  azure-acr: circleci/azure-acr@0.2.0
-
 jobs:
   jdk-8:
     working_directory: ~/circleci-step-by-step
@@ -106,6 +103,25 @@ jobs:
     - store_artifacts:
         path: target/step-by-step-0.0.1-SNAPSHOT.jar
 
+  deploy:
+    working_directory: ~/circleci-step-by-step
+    docker:
+    - image: circleci/openjdk:11-jdk-browsers
+    steps:
+    - add_ssh_keys:
+        fingerprints:
+            - "8b:88:75:43:2b:ac:f5:ad:be:bf:ce:17:00:b3:94:a4"
+    - run: 
+        name: Checkout & Build docker image
+        command: |
+            ssh azureuser@40.115.188.105 'cd circleci-step-by-step; git pull'
+            ssh azureuser@40.115.188.105 'cd circleci-step-by-step; docker build -t kurumai/step-by-step:latest .'
+            ssh azureuser@40.115.188.105 'cd circleci-step-by-step; docker-compose down; docker-compose up -d'
+    - run: 
+        name: Docker-compose up
+        command: |
+            ssh azureuser@40.115.188.105 'cd circleci-step-by-step; docker-compose down; docker-compose up -d'
+
 workflows:
   version: 2
   build:
@@ -113,8 +129,4 @@ workflows:
       #- "jdk-8"
       #- "jdk-10"
       #- "jdk-11"
-      - azure-acr/build-and-push-image:
-          login-server-name: noborudemo.azurecr.io
-          registry-name: noborudemo
-          repo: noborudemo/step-by-step
-
+      - "deploy"          

@@ -114,9 +114,8 @@ jobs:
     - run: 
         name: Checkout & Build docker image
         command: |
-            ssh azureuser@40.115.188.105 -oStrictHostKeyChecking=no 'cd circleci-step-by-step; git pull'
+            ssh azureuser@40.115.188.105 -oStrictHostKeyChecking=no 'cd circleci-step-by-step; git pull; mvn package -Dmaven.test.skip'
             ssh azureuser@40.115.188.105 -oStrictHostKeyChecking=no 'cd circleci-step-by-step; docker build -t kurumai/step-by-step:latest .'
-            ssh azureuser@40.115.188.105 -oStrictHostKeyChecking=no 'cd circleci-step-by-step; docker-compose down; docker-compose up -d'
     - run: 
         name: Docker-compose up
         command: |

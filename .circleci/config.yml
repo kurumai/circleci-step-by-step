@@ -125,12 +125,11 @@ workflows:
   version: 2
   build:
     jobs:
-      - "jdk-8"
-      - "jdk-10": 
-      - "jdk-11":
-      - "deploy"  
+      - jdk-8
+      - jdk-10
+      - jdk-11
+      - deploy:
           requires: 
             - "jdk-8"
             - "jdk-10"
             - "jdk-11"
-            

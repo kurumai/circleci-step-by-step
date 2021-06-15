@@ -14,3 +14,4 @@ jobs:
       - run: 
           name: Wait for DB
           command: dockerize -wait tcp://127.0.0.1:5432 -timeout 120s
+
